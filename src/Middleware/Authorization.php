@@ -126,7 +126,15 @@ class Authorization implements MiddlewareInterface
     private function currentUserHasPermissions(array $actionPermissions): bool
     {
         foreach ($actionPermissions as $actionPermission) {
-            if (!$this->currentUser->can($actionPermission->name, $actionPermission->params)) {
+            $permissions = explode('|', $actionPermission->name);
+            $canOr = false;
+            foreach ($permissions as $permission) {
+                if ($this->currentUser->can($permission, $actionPermission->params)) {
+                    $canOr = true;
+                    break;
+                }
+            }
+            if (!$canOr) {
                 return false;
             }
         }

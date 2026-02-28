@@ -9,7 +9,7 @@ use InvalidArgumentException;
 final class Permission
 {
     /**
-     * @param string $name Yiisoft\Rbac\Permission name
+     * @param string $name A permission name or a set of permission names separated by a pipe symbol |.
      * @param array $params Name-value pairs that would be passed to the rules associated with the roles and
      * permissions assigned to the user.
      */

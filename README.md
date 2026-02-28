@@ -130,6 +130,13 @@ final class PostController
 }
 ```
 
+Example of an **OR** permission:
+
+```php
+#[Permission('createPost|updatePost')]
+public function edit(#[RouteArgument('id')] ?int $id = null, ServerRequestInterface $request): ResponseInterface
+```
+
 Example of a permission with an executing  parameter value that would be passed to the rules associated with the roles:
 
 ```php
